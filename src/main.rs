@@ -1,16 +1,31 @@
-mod animal;
-mod phone;
+trait Animal {
+    fn eat(&self);
+}
 
-use animal::{Animal, Tiger};
-use phone::Phone;
+struct Tiger;
+impl Animal for Tiger {
+    fn eat(&self) {
+        println!("Tiger eating...")
+    }
+}
+
+struct Person;
+impl Animal for Person {
+    fn eat(&self) {
+        println!("Person eating...")
+    }
+}
+
+fn animal_eat<T: Animal>(animal: T) {
+    animal.eat();
+}
 
 fn main() {
-    let phone = Phone::new("小米", 3999.9);
-    phone.info();
-
     let tiger = Tiger;
-    tiger.eat();
-    tiger.sleep();
+    let person = Person;
+
+    animal_eat(tiger);
+    animal_eat(person);
 }
 
 #[cfg(test)]
