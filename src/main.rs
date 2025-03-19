@@ -1,5 +1,10 @@
+mod phone;
+
+use phone::Phone;
+
 fn main() {
-    println!("Hello, world!");
+    let phone = Phone::new("小米", 3999.9);
+    phone.info();
 }
 
 #[cfg(test)]
